@@ -6,11 +6,12 @@ class App extends Component {
     super();
     this.state = {
       users: [],
+      url: "https://academlo-api-users.herokuapp.com/users",
     };
   }
 
   componentDidMount() {
-    fetch("https://academlo-api-users.herokuapp.com/users")
+    fetch(this.state.url)
       // .then((respuesta) => {
       //   respuesta.json();
       // })
@@ -22,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Formulario />
+        <Formulario url={this.state.url} />
         <div className="tablas">
           <h1>Usuarios del sistema</h1>
           <table className="table header">
