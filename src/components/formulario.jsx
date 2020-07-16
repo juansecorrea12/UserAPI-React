@@ -4,7 +4,9 @@ import { Component } from "react";
 export default class Formulario extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      newUser: {},
+    };
   }
 
   addUser = (event) => {
@@ -16,18 +18,31 @@ export default class Formulario extends Component {
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(this.state.newUser),
     };
 
     fetch(this.props.url, options)
       .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        this.props.listUser();
+        // console.log("aqui elimina ----------");
+        // this.clearSpaces();
+      })
       .then((result) => console.log(result))
       .catch((error) => console.log(error));
   };
 
+  // clearSpaces = (event) => {
+  //   event.target.value = "";
+  // };
+
   handleInput = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      newUser: {
+        ...this.state.newUser,
+        [event.target.name]: event.target.value,
+      },
     });
   };
 
@@ -50,7 +65,7 @@ export default class Formulario extends Component {
           </p>
           <p>
             <label htmlFor="contrasena">Contraseña</label>
-            <input type="text" name="password" id="contrasena" />
+            <input type="password" name="password" id="contrasena" />
           </p>
           <input type="submit" value="Agregar Ususario" />
         </form>
