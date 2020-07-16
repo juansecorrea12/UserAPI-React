@@ -11,45 +11,60 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.getList();
+  }
+
+  getList = () => {
     fetch(this.state.url)
-      // .then((respuesta) => {
-      //   respuesta.json();
-      // })
       .then((response) => response.json())
       .then((result) => this.setState({ users: result.data }))
       .catch((error) => console.log(error));
-  }
+  };
+
+  deleteUser = (index) => {
+    const optionsDelete = {
+      method: "DELETE",
+    };
+
+    // Elimina
+    const urlDinamica =
+      "https://academlo-api-users.herokuapp.com/user/" + index;
+
+    fetch(urlDinamica, optionsDelete)
+      .then((response) => {
+        response.json();
+      })
+      .then((result) => {
+        console.log(result);
+        // Actualiza cuando tiene el resultado
+        this.getList();
+      });
+  };
 
   render() {
     return (
       <div>
-        <Formulario url={this.state.url} />
+        <Formulario url={this.state.url} listUser={this.getList} />
         <div className="tablas">
           <h1>Usuarios del sistema</h1>
-          <table className="table header">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Email</th>
-                <th>Password</th>
-              </tr>
-            </thead>
-          </table>
-          {this.state.users.map((user, index) => {
-            return (
-              <table className="table" key={index}>
-                <tbody>
-                  <tr>
-                    <td>{user.name}</td>
-                    <td>{user.lastname}</td>
-                    <td>{user.email}</td>
-                    <td>{user.password}</td>
-                  </tr>
-                </tbody>
-              </table>
-            );
-          })}
+          <div className="cards">
+            {this.state.users.map((user, index) => {
+              return (
+                <div className="card col-4" key={index}>
+                  <h5>{user.name}</h5>
+                  <span>{user.email}</span>
+                  <button
+                    className="btn-delete"
+                    onClick={() => {
+                      this.deleteUser(user.id);
+                    }}
+                  >
+                    Eliminar Usuario
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
