@@ -5,6 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(24, 73, 173);
+  background: linear-gradient(
+    90deg,
+    rgba(24, 73, 173, 1) 0%,
+    rgba(208, 72, 211, 1) 100%
+  );
 }
 
 code {
@@ -15,11 +21,14 @@ code {
 .formulario {
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
 }
 .formulario form {
   width: 30%;
   border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 2rem;
+  background-color: #fff;
 }
 .formulario p label {
   display: block;
@@ -28,24 +37,49 @@ code {
 .formulario h2 {
   text-align: center;
 }
+.formulario .b-bottom {
+  border-bottom: 1px solid #ccc !important;
+  padding: 1em 0em;
+}
 input[type="text"],
 input[type="email"],
 input[type="password"] {
+  display: block;
   width: 100%;
   height: 20px;
+  border: transparent;
+  padding: 8px !important;
 }
-input[type="submit"] {
+.btn {
   display: block;
   margin: 0px auto;
+  background: rgb(208, 72, 211);
+  background: linear-gradient(
+    90deg,
+    rgba(208, 72, 211, 1) 0%,
+    rgba(24, 73, 173, 1) 100%
+  );
+  padding: 0.5rem 2.5rem;
+  color: #fff;
+  border-radius: 15px;
+  border: none;
+  transition: all 300ms;
+}
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  font-size: 15px;
+}
+.btn i {
+  margin-left: 0.5em;
 }
 .tablas {
   margin-top: 2rem;
   padding: 1rem;
-  border: 1px solid #ccc;
-  box-shadow: 0px 0px 3px #444;
 }
 .tablas h1 {
   text-align: center;
+  margin-top: 0px;
 }
 .cards {
   display: flex;
@@ -55,11 +89,15 @@ input[type="submit"] {
 }
 .card {
   border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 1rem;
   box-shadow: 0px 0px 4px #eee inset;
   text-align: center;
-  background-color: lightgrey;
+  background-color: #fff;
   margin-bottom: 1em;
+}
+.card span {
+  overflow: hidden;
 }
 .card h5 {
   margin-top: 0.5em;
@@ -72,11 +110,41 @@ input[type="submit"] {
 }
 .btn-delete {
   margin-top: 1em;
-  background-color: white;
+  background: rgb(208, 72, 211);
+  background: linear-gradient(
+    90deg,
+    rgba(208, 72, 211, 1) 0%,
+    rgba(24, 73, 173, 1) 100%
+  );
   border: none;
+  border-radius: 15px;
   padding: 0.5em 1em;
+  color: white;
+  transition: all 300ms;
 }
 .btn-delete:hover {
-  background-color: #444;
-  color: white;
+  transform: scale(1.1);
+}
+.line-between {
+  border: 1px solid #ccc !important;
+  display: block;
+  width: 80%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.header-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-user button {
+  background-color: transparent;
+  border: none;
+}
+.header-user button i {
+  color: rgb(208, 72, 211);
+  transition: all 300ms;
+}
+.header-user button i:hover {
+  transform: scale(1.1);
 }
