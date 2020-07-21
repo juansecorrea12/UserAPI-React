@@ -50,24 +50,56 @@ export default class Formulario extends Component {
     return (
       <div className="formulario">
         <form onInput={this.handleInput} onSubmit={this.addUser}>
-          <h2>Formulario</h2>
+          <h2>Agrega un usuario</h2>
           <p>
             <label htmlFor="name">Nombre</label>
-            <input type="text" name="name" id="name" />
+            <input
+              className="b-bottom"
+              placeholder="Escribe un nombre"
+              type="text"
+              name="name"
+              id="name"
+              required
+            />
           </p>
           <p>
             <label htmlFor="lastName">Apellido</label>
-            <input type="text" name="lastname" id="lastName" />
+            <input
+              className="b-bottom"
+              placeholder="Escribe un apellido"
+              type="text"
+              name="lastname"
+              id="lastName"
+              required
+            />
           </p>
           <p>
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" />
+            <input
+              className="b-bottom"
+              placeholder="Escribe un email"
+              type="email"
+              name="email"
+              id="email"
+              required
+            />
           </p>
           <p>
             <label htmlFor="contrasena">Contraseña</label>
-            <input type="password" name="password" id="contrasena" />
+            <input
+              className="b-bottom"
+              placeholder="Escribe una contraseña"
+              type="password"
+              name="password"
+              id="contrasena"
+              required
+            />
           </p>
-          <input type="submit" value="Agregar Ususario" />
+          {/* <input type="submit" value="Agregar Ususario" /> */}
+          <button type="submit" className="btn">
+            Agregar Usuario
+            <i className="fas fa-long-arrow-alt-right"></i>
+          </button>
         </form>
       </div>
     );
